@@ -1,0 +1,7 @@
+# action.yml
+name: 'Certbot-dns-plugins CI'
+description: 'Continuous integration for the certbot-dns-plugins overlay'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
