@@ -26,8 +26,6 @@ emerge -qvbk --buildpkg-exclude "*/*::certbot-dns-plugins" \
 
 emerge_status=$?
 
-[ $status -eq 0 ] && exit 0 || exit 1
-
 eclean packages
 packages_status=$?
 
