@@ -1,6 +1,6 @@
 #!/bin/sh -l
 
-export PORTDIR_OVERLAY="."
+export PORTDIR_OVERLAY="../certbot-dns-plugins-overlay/"
 export ACCEPT_KEYWORDS="~amd64"
 export FEATURES="-ipc-sandbox -network-sandbox"
 
@@ -24,5 +24,16 @@ emerge -qvbk --buildpkg-exclude "*/*::certbot-dns-plugins" \
 	app-crypt/certbot-dns-route53 \
 	app-crypt/certbot-dns-sakuracloud
 
+emerge_status=$?
+
+[ $status -eq 0 ] && exit 0 || exit 1
+
 eclean packages
+packages_status=$?
+
 eclean distfiles
+distfiles_status=$?
+
+status=$(expr $emerge_status + $packages_status + $distfiles_status)
+[ $status -eq 0 ] && exit 0 || exit 1
+
