@@ -11,6 +11,12 @@ mkdir -p $(pwd)/var/cache/{binpkgs,distfiles}
 export PKGDIR="$(pwd)/var/cache/binpkgs"
 export DISTDIR="$(pwd)/var/cache/distfiles"
 
+find /var/cache/binpkgs
+find /var/cache/distfiles
+
+find var/cache/binpkgs
+find var/cache/distfiles
+
 emerge -qvbk app-portage/gentoolkit
 
 emerge -qvbk --buildpkg-exclude "*/*::certbot-dns-plugins" \
