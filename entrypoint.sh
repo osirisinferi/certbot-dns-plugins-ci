@@ -7,6 +7,9 @@ export FEATURES="-ipc-sandbox -network-sandbox"
 find /var/cache/binpkgs
 find /var/cache/distfiles
 
+find var/cache/binpkgs
+find var/cache/distfiles
+
 emerge -qvbk app-portage/gentoolkit
 
 emerge -qvbk --buildpkg-exclude "*/*::certbot-dns-plugins" \
@@ -26,11 +29,23 @@ emerge -qvbk --buildpkg-exclude "*/*::certbot-dns-plugins" \
 
 emerge_status=$?
 
+find /var/cache/binpkgs
+find /var/cache/distfiles
+
+find var/cache/binpkgs
+find var/cache/distfiles
+
 eclean packages
 packages_status=$?
 
 eclean distfiles
 distfiles_status=$?
+
+find /var/cache/binpkgs
+find /var/cache/distfiles
+
+find var/cache/binpkgs
+find var/cache/distfiles
 
 status=$(expr $emerge_status + $packages_status + $distfiles_status)
 [ $status -eq 0 ] && exit 0 || exit 1
