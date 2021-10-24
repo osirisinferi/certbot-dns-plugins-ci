@@ -4,6 +4,8 @@ export PORTDIR_OVERLAY="."
 export ACCEPT_KEYWORDS="~amd64"
 export FEATURES="-ipc-sandbox -network-sandbox"
 
+echo "Working dir: $(pwd)"
+
 find /var/cache/binpkgs
 find /var/cache/distfiles
 
