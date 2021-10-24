@@ -6,11 +6,10 @@ export FEATURES="-ipc-sandbox -network-sandbox"
 
 echo "Working dir: $(pwd)"
 
-find /var/cache/binpkgs
-find /var/cache/distfiles
+mkdir -p $(pwd)/var/cache/{binpkgs,distfiles}
 
-find var/cache/binpkgs
-find var/cache/distfiles
+export PKGDIR="$(pwd)/var/cache/binpkgs"
+export DISTDIR="$(pwd)/var/cache/distfiles"
 
 emerge -qvbk app-portage/gentoolkit
 
