@@ -1,7 +1,6 @@
 #!/bin/sh -l
 
 export PORTDIR_OVERLAY="."
-export ACCEPT_KEYWORDS="~amd64"
 export FEATURES="-ipc-sandbox -network-sandbox"
 
 mkdir -p $(pwd)/var/cache/{binpkgs,distfiles}
