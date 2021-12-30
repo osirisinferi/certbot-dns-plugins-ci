@@ -1,6 +1,3 @@
 */*::certbot-dns-plugins
 app-crypt/certbot
 app-crypt/acme
-
-# Dependency for app-crypt/certbot-dns-sakuracloud
-dev-python/dns-lexicon
