@@ -23,7 +23,8 @@ emerge -qvbk --buildpkg-exclude "*/*::certbot-dns-plugins" \
 	app-crypt/certbot-dns-ovh \
 	app-crypt/certbot-dns-rfc2136 \
 	app-crypt/certbot-dns-route53 \
-	app-crypt/certbot-dns-sakuracloud
+	app-crypt/certbot-dns-sakuracloud \
+	app-crypt/certbot-dns-freenom
 
 emerge_status=$?
 
