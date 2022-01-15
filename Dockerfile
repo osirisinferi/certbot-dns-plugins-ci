@@ -6,6 +6,8 @@ COPY --from=portage /var/db/repos/gentoo /var/db/repos/gentoo
 
 COPY package.accept_keywords /etc/portage/package.accept_keywords
 
+COPY package.use /etc/portage/package.use
+
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]

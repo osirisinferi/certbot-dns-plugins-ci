@@ -1,0 +1,2 @@
+# Required for certbot-dns-azure
+app-arch/brotli python
