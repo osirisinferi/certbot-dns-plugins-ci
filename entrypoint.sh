@@ -21,7 +21,7 @@ function check_plugins {
         echo -n "Checking if all currently installed plugins are available in Certbot: "
 
         if [[ -z "$diff" ]]; then
-                echo "all installed plugins available."
+                echo -e "all installed plugins available.\n"
                 return 0
         else
                 echo "plugin difference!"
@@ -34,13 +34,17 @@ function check_plugins {
 emerge -qvbk app-portage/gentoolkit
 
 plugins_available=($(equery -q list -o -F '=$cpv' "certbot-dns-*"))
+plugins_available_len=${#plugins_available[@]}
 plugins_installed=()
 
 emerge_status=0
 check_plugins_status=0
 
-for plugin in "${plugins_available[@]}"
+for i in "${!plugins_available[@]}"
 do
+        plugin=${plugins_available[${i}]}
+        printf 'Installing %s (%d/%d)\n' ${plugin} $((${i}+1)) ${plugins_available_len} 
+
         emerge -qvbk --buildpkg-exclude "*/*::certbot-dns-plugins */*::third-party-certbot-dns-plugins" ${plugin}
         emerge_status=$?
         if [ ${emerge_status} -ne 0 ]; then
