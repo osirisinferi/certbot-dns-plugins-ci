@@ -8,6 +8,8 @@ COPY package.accept_keywords /etc/portage/package.accept_keywords
 
 COPY package.use /etc/portage/package.use
 
+COPY stripversion.py /usr/local/bin/stripversion.py
+
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
