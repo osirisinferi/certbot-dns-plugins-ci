@@ -1,5 +1,5 @@
 */*::certbot-dns-plugins **
-*/*::third-party-certbot-dns-plugins **
+*/*::third-party-certbot-plugins **
 app-crypt/certbot **
 app-crypt/acme **
 
