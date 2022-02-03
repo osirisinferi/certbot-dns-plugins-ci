@@ -8,6 +8,8 @@ mkdir -p $(pwd)/var/cache/{binpkgs,distfiles}
 export PKGDIR="$(pwd)/var/cache/binpkgs"
 export DISTDIR="$(pwd)/var/cache/distfiles"
 
+rm -rf "${DISTDIR}/git3-src/"
+
 function check_plugins {
         local -n _loaded_plugins=$1
         local -n _expected_plugins=$2
