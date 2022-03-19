@@ -5,3 +5,6 @@ app-crypt/acme
 
 # Dependency for app-crypt/certbot-dns-sakuracloud
 dev-python/dns-lexicon
+
+# Dependency for app-crypt/certbot-dns-exonet
+dev-python/inflection
