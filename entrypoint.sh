@@ -48,7 +48,7 @@ do
         plugin=${plugins_available[${i}]}
         printf 'Installing %s (%d/%d)\n' ${plugin} $((${i}+1)) ${plugins_available_len} 
 
-        emerge -qvbk --buildpkg-exclude "*/*::certbot-dns-plugins */*::third-party-certbot-dns-plugins" ${plugin}
+        emerge -qvbk --buildpkg-exclude "*/*::certbot-dns-plugins */*::third-party-certbot-dns-plugins dev-lang/rust-bin" ${plugin}
         emerge_status=$?
         if [ ${emerge_status} -ne 0 ]; then
                 break
