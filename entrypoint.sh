@@ -1,7 +1,7 @@
 #!/bin/sh -l
 
 export PORTDIR_OVERLAY="."
-export FEATURES="-ipc-sandbox -network-sandbox -pid-sandbox"
+export FEATURES="-ipc-sandbox -network-sandbox -pid-sandbox -usersandbox"
 
 mkdir -p $(pwd)/var/cache/{binpkgs,distfiles}
 
