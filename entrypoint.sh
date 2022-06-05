@@ -66,6 +66,7 @@ do
         check_plugins_status=$?
 
         if [ ${check_plugins_status} -ne 0 ]; then
+                cat /var/log/letsencrypt/letsencrypt.log
                 break
         fi
 done
