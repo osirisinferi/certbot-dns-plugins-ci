@@ -38,6 +38,8 @@ function check_plugins {
 
 emerge -qvbk app-portage/gentoolkit
 
+USE="-*" emerge -qvbk dev-libs/libpcre
+
 plugins_available=($(equery -q list -o -F '=$cpv' "certbot-dns-*"))
 plugins_available_len=${#plugins_available[@]}
 plugins_installed=()
