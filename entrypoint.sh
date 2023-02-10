@@ -12,6 +12,7 @@ mkdir -p "${DISTDIR}/git3-src/"
 chown -R portage:portage "${DISTDIR}/git3-src/"
 
 echo "PYTHON_TARGETS=\"python3_8 python3_9 python3_10\"" >> /etc/portage/make.conf
+echo "dev-python/oauth2client" >> /etc/portage/package.unmask
 
 function check_plugins {
         local -n _loaded_plugins=$1
