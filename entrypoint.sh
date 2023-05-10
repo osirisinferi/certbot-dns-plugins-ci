@@ -11,7 +11,17 @@ export DISTDIR="$(pwd)/var/cache/distfiles"
 mkdir -p "${DISTDIR}/git3-src/"
 chown -R portage:portage "${DISTDIR}/git3-src/"
 
-echo "PYTHON_TARGETS=\"python3_10 python3_11\"" >> /etc/portage/make.conf
+MIN=10
+MAX=11
+
+declare -a PY_TARGETS
+
+for i in `seq ${MIN} ${MAX}`
+do
+        PY_TARGETS+=("python3."${i})
+done
+
+# Temporary fix until certbot-dns-google doesn't need it any longer
 echo "dev-python/oauth2client" >> /etc/portage/package.unmask
 
 function check_plugins {
@@ -65,15 +75,25 @@ do
                 plugins_installed+=($plugin_stripped)
         fi
 
-        plugins_loaded=($(certbot plugins 2>&1 | pcregrep -o1 "^\* dns-(.+)"))
 
-        check_plugins plugins_loaded plugins_installed
-        check_plugins_status=$?
+        for py in ${PY_TARGETS[@]}; do
+                echo "Testing ${py^}:"
+                plugins_loaded=($(${py} /usr/bin/certbot plugins 2>&1 | pcregrep -o1 "^\* dns-(.+)"))
+		plugins_loaded_status=$?
 
-        if [ ${check_plugins_status} -ne 0 ]; then
-		certbot plugins -vvv
-                break
-        fi
+		if [ ${plugins_loaded_status} -ne 0]; then
+			echo "This didn't work:"
+			$(${py} /usr/bin/certbot plugins)
+		fi
+
+                check_plugins plugins_loaded plugins_installed
+                check_plugins_status=$?
+
+                if [ ${check_plugins_status} -ne 0 ]; then
+                        $(${py} certbot plugins -vvv)
+                        break 2
+                fi
+        done
 done
 
 eclean packages

@@ -1,2 +1,4 @@
+*/* PYTHON_TARGETS: python3_10 python3_11
+
 # Required for certbot-dns-azure
 app-arch/brotli python
