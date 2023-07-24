@@ -81,7 +81,7 @@ do
                 plugins_loaded=($(${py} /usr/bin/certbot plugins 2>&1 | pcregrep -o1 "^\* dns-(.+)"))
 		plugins_loaded_status=$?
 
-		if [ ${plugins_loaded_status} -ne 0]; then
+		if [ ${plugins_loaded_status} -ne 0 ]; then
 			echo "This didn't work:"
 			$(${py} /usr/bin/certbot plugins)
 		fi
