@@ -21,9 +21,6 @@ do
         PY_TARGETS+=("python3."${i})
 done
 
-# Temporary fix until certbot-dns-google doesn't need it any longer
-echo "dev-python/oauth2client" >> /etc/portage/package.unmask
-
 function check_plugins {
         local -n _loaded_plugins=$1
         local -n _expected_plugins=$2
