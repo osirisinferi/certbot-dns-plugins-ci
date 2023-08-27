@@ -48,7 +48,7 @@ emerge -qvbk app-portage/gentoolkit
 
 USE="-*" emerge -qvbk dev-libs/libpcre
 
-plugins_available=($(equery -q list -o -F '=$cpv' "certbot-dns-*"))
+plugins_available=($(equery -q list -o -F '=$cpv' "certbot-*"))
 plugins_available_len=${#plugins_available[@]}
 plugins_installed=()
 
@@ -66,7 +66,7 @@ do
                 break
         fi
 
-        plugin_stripped=$(stripversion.py "${plugin}" | sed 's/certbot-dns-//')
+        plugin_stripped=$(stripversion.py "${plugin}" | sed 's/certbot-//')
 
         if [[ ! " ${plugins_installed[*]} " =~ " ${plugin_stripped} " ]]; then
                 plugins_installed+=($plugin_stripped)
@@ -75,7 +75,7 @@ do
 
         for py in ${PY_TARGETS[@]}; do
                 echo "Testing ${py^}:"
-                plugins_loaded=($(${py} /usr/bin/certbot plugins 2>&1 | pcregrep -o1 "^\* dns-(.+)"))
+                plugins_loaded=($(${py} /usr/bin/certbot plugins 2>&1 | pcregrep -o1 "^\* (.+)" | pcregrep -v "^apache$|^nginx$|^standalone$|^webroot$"))
 		plugins_loaded_status=$?
 
 		if [ ${plugins_loaded_status} -ne 0 ]; then
