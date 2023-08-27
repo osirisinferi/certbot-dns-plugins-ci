@@ -44,6 +44,9 @@ function check_plugins {
         fi
 }
 
+# The Portage Docker image is synced just once a week. Let's sync it to the most recent version.
+emaint sync -a >/dev/null
+
 emerge -qvbk app-portage/gentoolkit
 
 USE="-*" emerge -qvbk dev-libs/libpcre
