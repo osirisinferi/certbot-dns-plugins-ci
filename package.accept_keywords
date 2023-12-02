@@ -3,8 +3,11 @@
 app-crypt/certbot
 app-crypt/acme
 
-# Dependency for app-crypt/certbot-dns-sakuracloud
+# Dependency for multiple DNS plugins
 dev-python/dns-lexicon
+
+# Dependency for dev-python/dns-lexicon
+dev-python/pyotp
 
 # Dependency for app-crypt/certbot-dns-exonet
 dev-python/inflection
