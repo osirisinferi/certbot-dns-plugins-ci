@@ -12,7 +12,7 @@ mkdir -p "${DISTDIR}/git3-src/"
 chown -R portage:portage "${DISTDIR}/git3-src/"
 
 MIN=10
-MAX=11
+MAX=12
 
 declare -a PY_TARGETS
 
