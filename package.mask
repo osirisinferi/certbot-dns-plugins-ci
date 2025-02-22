@@ -1,1 +1,8 @@
 dev-lang/rust
+# This new upstream ebuild of Certbot reworks the entire Certbot ebuild which
+# now includes the `acme` library and almost all the DNS plugins, except for
+# `dns-cloudflare` and `dns-digitalocean` (which require packages missing in
+# the main Gentoo repository).
+# We block this new version of the Certbot ebuild for now until we figure out
+# some smart way to make it work again.
+>=app-crypt/certbot-3.2.0-r100
