@@ -11,8 +11,8 @@ export DISTDIR="$(pwd)/var/cache/distfiles"
 mkdir -p "${DISTDIR}/git3-src/"
 chown -R portage:portage "${DISTDIR}/git3-src/"
 
-MIN=10
-MAX=12
+MIN=11
+MAX=13
 
 declare -a PY_TARGETS
 
